@@ -1,0 +1,36 @@
+<form [formGroup]="CustomerModel.formcustgroup">
+Customer Code : <input formControlName='CustomerCodevalidator' [(ngModel)] = "CustomerModel.CustomerCode" type="text"/> <br>
+Customer Name : <input formControlName='CustomerNamevalidator' [(ngModel)] = "CustomerModel.Customername" type="text"/> <br>
+Customer Amount: <input [(ngModel)] ="CustomerModel.CustomerAmount" [ngModelOptions]="{standalone: true}" type="text"/>  <br>
+
+
+<input [disabled]='!(CustomerModel.formcustgroup.valid)' (click)="Add()" type="button" value="Add" /> <br>
+</form>
+
+<div [hidden]="!(CustomerModel.
+    formcustgroup.Controls['CustomerCodevalidator'].
+      hasError['pattern'])" >
+       Invalid Format in the code </div><br>
+<div [hidden]="!(CustomerModel.
+    formcustgroup.Controls['CustomerCodevalidator'].
+      hasError['required'])">
+       Code is required  </div><br>
+<div [hidden]="!(CustomerModel.
+    formcustgroup.Controls['CustomerNamevalidator'].
+      hasError['required'])">
+        Name is required </div><br>
+
+<table>
+    <tr>
+    <td> CustomerCode</td>
+    <td> Customername</td>
+    <td> CustomerAmount</td>
+    </tr>
+    <tr *ngFor = "let cust of CustomerModels" >
+        <td> {{cust.CustomerCode}} </td>
+        <td> {{cust.Customername}} </td>
+        <td> {{cust.CustomerAmount}} </td>
+    
+
+    </tr>
+</table>
